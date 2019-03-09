@@ -40,12 +40,14 @@ export default {
         animationDurationUpdate: 1000,
         geo: {
           map: "china",
-          // roam: true,
+          roam: true,
           label: {
             emphasis: {
               textStyle: { color: "#eee" }
             }
           },
+          top: 'middle',
+          left: 'center',
           itemStyle: {
             position: "center",
             normal: {

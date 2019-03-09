@@ -85,9 +85,12 @@ export default {
       this.chart.setOption({
         title: this.option.title,
         geo: {
-          map: params.name
+          map: params.name,
+          top: 'middle',
+          left: 'center'
         }
       });
+      console.log(this.chart)
     },
     async showCity(params) {
       const cityName = cityMap[params.name];
