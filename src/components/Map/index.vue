@@ -44,22 +44,16 @@ export default {
   },
   watch: {
     option(opt) {
+      this.restore();
       this.chart.setOption(opt);
     }
   },
   mounted() {
     this.init();
     this.chart.on("click", params => {
-      console.log(params.name)
-      if (noInfoList.includes(params.name)) return
-
-      if (this.status.step === 1) {
-        this.showProvince(params);
-      } else if (this.status.step === 2) {
-        this.showCity(params);
-      }
+      if (noInfoList.includes(params.name)) return;
+      this.showChildMap(params);
     });
-
     this.chart.on("dblclick", () => {
       if (this.status.step > 1) {
         this.init();
@@ -69,35 +63,44 @@ export default {
 
   methods: {
     init() {
+      if (this.chart) {
+        this.restore();
+      }
       this.status.step = 1;
       echarts.registerMap("china", CHINAJSON);
-      this.chart = echarts.init(this.$el);
+      if (!this.chart) {
+        this.chart = echarts.init(this.$el);
+      }
       this.chart.setOption(this.option);
     },
-    async showProvince(params) {
-      const res = await import(`./province/${params.name}`);
-      const data = res.default;
-
-      echarts.registerMap(params.name, data);
-
-      this.status.step = 2;
-      this.chart = echarts.init(this.$el);
-      this.chart.setOption({
-        title: this.option.title,
-        geo: {
-          map: params.name
-        }
+    restore() {
+      this.chart.dispatchAction({
+        type: "restore"
       });
     },
-    async showCity(params) {
+    async showChildMap(params) {
       const cityName = cityMap[params.name];
-      const res = await import(`./city/${cityName}.json`);
+
+      if (this.status.step > 1 && !cityName) {
+        console.log("到底了");
+        return;
+      }
+
+      this.restore();
+
+      this.status.step++;
+
+      const obj = {
+        2: `./province/${params.name}.json`,
+        3: `./city/${cityName}.json`
+      };
+
+      const url = obj[this.status.step];
+      const res = await import(`${url}`);
       const data = res.default;
 
       echarts.registerMap(params.name, data);
 
-      this.status.step = 3;
-      this.chart = echarts.init(this.$el);
       this.chart.setOption({
         title: this.option.title,
         geo: {

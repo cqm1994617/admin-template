@@ -40,7 +40,7 @@ export default {
         animationDurationUpdate: 1000,
         geo: {
           map: "china",
-          // roam: true,
+          roam: true,
           label: {
             emphasis: {
               textStyle: { color: "#eee" }
