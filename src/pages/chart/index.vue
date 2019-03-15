@@ -16,7 +16,7 @@
   <div>
     <Breadcrumb :style="{margin: '16px 0'}">
       <BreadcrumbItem>图表页</BreadcrumbItem>
-      <BreadcrumbItem to="/template-1/chart">饼图</BreadcrumbItem>
+      <BreadcrumbItem to="/chart">饼图</BreadcrumbItem>
     </Breadcrumb>
     <Card>
       <div class="inline-box">
@@ -61,6 +61,7 @@
 
 <script>
 import Chart from "../../components/Chart.vue";
+import Layout from "../../components/layout";
 
 export default {
   data() {
@@ -498,7 +499,8 @@ export default {
     };
   },
   components: {
-    Chart
+    Chart,
+    Layout
   }
 };
 </script>

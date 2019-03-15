@@ -21,8 +21,7 @@ const store = new Vuex.Store(AppStore)
 
 router.beforeEach((to, before, next) => {
   iView.LoadingBar.start()
-  window.document.title = to.meta.title || '数据平台';
-
+  window.document.title = to.meta.title || '数据平台'
   next()
 })
 

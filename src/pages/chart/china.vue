@@ -7,20 +7,22 @@
 
 
 <template>
-  <div class="container">
-    <Map
-      :option="option"
-      :width="'100%'"
-      :height="'100%'"
-      :isMap="true"
-    >
-
-    </Map>
+  <div>
+    <div class="container">
+      <Map
+        :option="option"
+        :width="'100%'"
+        :height="'100%'"
+        :isMap="true"
+      >
+      </Map>
+    </div>
   </div>
 </template>
 
 <script>
 import Map from "../../components/Map/index.vue";
+import Layout from "../../components/layout";
 
 export default {
   data() {
@@ -46,8 +48,8 @@ export default {
               textStyle: { color: "#eee" }
             }
           },
-          top: 'middle',
-          left: 'center',
+          top: "middle",
+          left: "center",
           itemStyle: {
             position: "center",
             normal: {
@@ -67,7 +69,8 @@ export default {
   },
 
   components: {
-    Map
+    Map,
+    Main: Layout
   }
 };
 </script>

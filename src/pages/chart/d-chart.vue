@@ -58,6 +58,7 @@
 <script>
 import Chart from "../../components/Chart.vue";
 import { clearTimeout } from "timers";
+import Layout from "../../components/layout";
 
 export default {
   data() {
@@ -97,7 +98,8 @@ export default {
     };
   },
   components: {
-    Chart
+    Chart,
+    Main: Layout
   },
   methods: {
     random() {

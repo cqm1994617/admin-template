@@ -1,6 +1,5 @@
+import Index from '../pages/index.vue'
 import Home from '../pages/home/index.vue'
-import Template1 from '../pages/template1/index.vue'
-import Template2 from '../pages/template2/index.vue'
 import Chart from '../pages/chart/index.vue'
 import Inner from '../pages/innerPage/index.vue'
 import DChart from '../pages/chart/d-chart.vue'
@@ -10,48 +9,40 @@ import China from '../pages/chart/china.vue'
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: Index,
     children: [
       {
-        path: 'template-1',
-        component: Template1,
-        meta: { title: '模板1' },
-        children: [
-          {
-            path: 'chart',
-            component: Chart,
-            meta: { title: '静态图表' }
-          },
-          {
-            path: 'inner',
-            component: Inner,
-            meta: { title: '内部页' }
-          },
-          {
-            path: 'd-chart',
-            component: DChart,
-            meta: { title: '动态图表' }
-          },
-          {
-            path: 'form',
-            component: Form,
-            meta: { title: '表单' }
-          },
-          {
-            path: 'china-map',
-            component: China,
-            meta: { title: '中国地图' }
-          }
-        ]
+        path: 'home',
+        component: Home,
+        meta: { title: '首页' }
       },
       {
-        path: 'template-2',
-        component: Template2,
-        meta: { title: '模板2' },
+        path: 'chart',
+        component: Chart,
+        meta: { title: '静态图表' }
+      },
+      {
+        path: 'inner',
+        component: Inner,
+        meta: { title: '内部页' }
+      },
+      {
+        path: 'd-chart',
+        component: DChart,
+        meta: { title: '动态图表' }
+      },
+      {
+        path: 'form',
+        component: Form,
+        meta: { title: '表单' }
+      },
+      {
+        path: 'china-map',
+        component: China,
+        meta: { title: '中国地图' }
       }
     ]
   }
 ]
-
 
 export default routes

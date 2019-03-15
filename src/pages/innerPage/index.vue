@@ -1,12 +1,15 @@
 <template>
-  <div>inner</div>
+  <div>
+    <div>inner</div>
+  </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-
+      
     }
   }
 }
